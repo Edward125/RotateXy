@@ -1,0 +1,541 @@
+!Tebo-ict v3.0
+!HP3070
+!Date: 2019-5-10 Time: 14:42:48
+
+HEADING
+   "13730-1"
+
+
+
+GLOBAL OPTIONS
+Fixture Type                     CASSETTE;
+Fixture Size                     BANK1;
+Top Probes Allowed               ON;
+Heavy Probe Force                8;
+Light Probe Force                4;
+Vacuum Density Threshold         104;
+Mechanical Density Threshold     800;
+Autofile                         12;
+Test Strategy                    COMBINATIONAL;
+WireWrapping                     MANUAL;
+Metric Units                     OFF;
+Common Lead Resistance           0.1;  !(Ohms) From Probe To Compo
+Common Lead Inductance           1u;    !(Henries) From Probe To Compo
+Capacitance Compensation         ON;
+
+DEVICE OPTIONS
+Tolerance Multiplier     1.5;
+Remote Sensing           ON;
+Fuse Threshold           10;
+Jumper Threshold         1.0;
+Switch Threshold         1.0;
+Diode Current            1m;
+Zener Current            1m;
+Adjust                   ACCURATE;
+Upstream Disable         ON;
+Upstream Condition       ON;
+
+FAMILY OPTIONS
+TTL
+Drive High               3.5;
+Drive Low                0.2;
+Receive High             2.0;
+Receive Low              0.8;
+Edge Speed               100;
+Open Input Default       X;
+Load                     UP;
+HCMOS
+Drive High               4.0;
+Drive Low                0.6;
+Receive High             3.5;
+Receive Low              0.6;
+Edge Speed               100;
+Open Input Default       X;
+Load                     NONE;
+CMOS
+Drive High               4.0;
+Drive Low                0.4;
+Receive High             3.6;
+Receive Low              0.5;
+Edge Speed               50;
+Open Input Default       X;
+Load                     NONE;
+
+
+CARD OPTIONS
+TTL
+HYBRID ;
+HCMOS
+HYBRID ;
+CMOS
+HYBRID ;
+
+FIXED NODE OPTIONS
+U+       Family  TTL  is  1 ;
+U-       Family  ALL  is  X ;
+V+       Family  ALL  is  1 ;
+V-       Family  ALL  is  X ;
+G0       Family  ALL  is  0 ;
+
+U+   Supply 1 at 5.0 Volts, 1.3 Amps ;
+G0   Ground ;
+
+LIBRARY OPTIONS
+"library/custom"
+"library/setup"
+"library/standard" ;
+
+
+
+
+UNCONNECTED PIN NC;
+
+PIN_MAP
+	CAPACITOR
+	    P   1
+	    N   2;
+
+	DIODE
+	    1   A
+	    2   C;
+	FET
+	    1   S
+	    2   G
+	    3   D;
+	POTENTIOMETER
+	    3   W;
+	TRANSISTOR
+	    1   E
+	    2   B
+	    3   C;
+	ZENER
+	    1  A
+	    2  C;
+END
+
+
+CAPACITOR
+  C15        SCD1U10V2KX-4u 78.10423.5FL 78.10423.5FL F      PN"C402H20"   ;
+  C16        SC470P50V2KX-3u 78.47124.2FL 78.47124.2FL F      PN"C402H22"   ;
+  C201       SC1U10V2KX-1u 78.10523.5FL 78.10523.5FL F      PN"C402H22"   ;
+  C202       SC47P50V2JN-3u 78.47034.1FL 78.47034.1FL F      PN"C402H22"   ;
+  C203       SC47P50V2JN-3u 78.47034.1FL 78.47034.1FL F      PN"C402H22"   ;
+  C204       SCD1U10V2KX-5u 78.10423.2FL 78.10423.2FL F      PN"C402H22"   ;
+  C205       SC1U10V2KX-1u 78.10523.5FL 78.10523.5FL F      PN"C402H22"   ;
+  C206       SC1U10V2KX-1u 78.10523.5FL 78.10523.5FL F      PN"C402H22"   ;
+  C207       SC1U10V2KX-1u 78.10523.5FL 78.10523.5FL F      PN"C402H22"   ;
+  C208       SC1U10V2KX-1u 78.10523.5FL 78.10523.5FL F      PN"C402H22"   ;
+  C209       SC8P250V2u 78.8R274.1FL 78.8R274.1FL F      PN"C402H22"   ;
+  C210       SC1U10V2KX-1u 78.10523.5FL 78.10523.5FL F      PN"C402H22"   ;
+  C211       SC2200P50V2KX-2u 78.22224.2FL 78.22224.2FL F      PN"C402H22"   ;
+  TC1        ST150U6D3VBM-1u 77.C1571.09L 77.C1571.09L F      PN"CT3528H79"   ;
+
+CONNECTOR
+  USB4           NT PN"SKT-USB8-171132-U"   ;
+
+DIODE
+  D201           0.8  0.4      PN"D1608-UH28"   ;
+  D202           0.8  0.4      PN"D1608-UH28"   ;
+
+PIN LIBRARY
+  L3                 PN"L125100-4PH24"   ;
+  D1                 PN"SOT-6H58"   ;
+  D203               PN"SOT723-1D2-312H22"   ;
+
+RESISTOR
+  R18                          0R2J-2  63.R0034.1DL 63.R0034.1DL F     PN"R402H16"   ;
+  R19                          0R2J-2  63.R0034.1DL 63.R0034.1DL F     PN"R402H16"   ;
+  R201                        27R2J-1  63.27034.1DL 63.27034.1DL F     PN"R402H16"   ;
+  R202                        27R2J-1  63.27034.1DL 63.27034.1DL F     PN"R402H16"   ;
+  R203                       4K7R2J-2  63.47234.1DL 63.47234.1DL F     PN"R402H16"   ;
+  R204                       47KR2J-2  63.47334.1DL 63.47334.1DL F     PN"R402H16"   ;
+  R205                          59KR2  64.59025.6DL 64.59025.6DL F     PN"R402H16"   ;
+  R206                          22KR2  63.22334.1DL 63.22334.1DL F     PN"R402H16"   ;
+  R207                       4K7R2J-2  63.47234.1DL 63.47234.1DL F     PN"R402H16"   ;
+  R208                     330KR2J-L1  63.33434.1DL 63.33434.1DL F     PN"R402H16"   ;
+  R209                       4K7R2J-2  63.47234.1DL 63.47234.1DL F     PN"R402H16"   ;
+  R210                       100R2J-2  63.10134.1DL 63.10134.1DL F     PN"R402H14"   ;
+  R211                       100R2J-2  63.10134.1DL 63.10134.1DL F     PN"R402H14"   ;
+  R212                         0R3J-0  63.00000.00L 63.00000.00L F     PN"R603H22"   ;
+
+UNDEFINED
+  AFTP302        NT "AFTE14P-75" ;
+  AFTP303        NT "AFTE14P-75" ;
+  AFTP304        NT "AFTE14P-75" ;
+  AFTP305        NT "AFTE14P-75" ;
+  FP1            NT "BGA33C120044H68" ;
+  FPCN1          NT "51530-01041-W01" ;
+
+CONNECTIONS
+BIOMETRIC_USBPP
+  D202.1
+  R202.2
+  FPCN1.3
+  C203.1;
+GND
+  D202.2
+  D201.2
+  USB4.4
+  USB4.5
+  USB4.6
+  USB4.7
+  USB4.8
+  FP1.A8
+  FP1.B5
+  FP1.C4
+  FP1.C8
+  C209.2
+  R212.2
+  R206.2
+  R205.2
+  R209.2
+  R207.2
+  FPCN1.4
+  FPCN1.5
+  FPCN1.6
+  FPCN1.11
+  FPCN1.12
+  C211.2
+  C204.2
+  C203.2
+  C202.2
+  C210.2
+  C208.2
+  C207.2
+  C205.2
+  C201.2
+  D1.2
+  TC1.2
+  C16.2
+  C15.2
+  AFTP305.1;
+BIOMETRIC_USBPN
+  D201.1
+  R201.2
+  FPCN1.2
+  C202.1;
+USBPP2_TVS
+  USB4.3
+  D1.4
+  L3.3
+  AFTP304.1
+  R19.2;
+USBPN2_TVS
+  USB4.2
+  D1.3
+  L3.4
+  AFTP303.1
+  R18.2;
+5V_USB4_S3
+  USB4.1
+  FPCN1.9
+  FPCN1.10
+  D1.5
+  TC1.1
+  C16.1
+  C15.1
+  AFTP302.1;
+REF_OSC
+  FP1.C11
+  C209.1;
+BDRIVE1
+  FP1.B11
+  R210.1;
+3D3V_FP_S0
+  FP1.A1
+  FP1.A11
+  R208.2
+  R204.1
+  R203.1
+  FPCN1.1
+  C204.1
+  C206.1
+  C205.1
+  C201.1;
+UCR_VDD
+  FP1.C10
+  C207.1;
+ESD_GND
+  FP1.A3
+  FP1.A9
+  FP1.C3
+  FP1.C9
+  R212.1
+  D203.3;
+ESD_GND_D1
+  FP1.C5
+  FP1.C7
+  D203.1
+  R211.2;
+MISO
+  FP1.C6
+  R209.1
+  R203.2;
+BDRIVE2
+  FP1.B10
+  R211.1;
+XTALIN
+  FP1.B6
+  C211.1;
+MOSI
+  FP1.B4
+  R207.1;
+MCK
+  FP1.B3
+  R206.1;
+REG_OUT
+  FP1.A10
+  C208.1;
+ESD_GND_D2
+  FP1.A5
+  FP1.A7
+  D203.2
+  R210.2;
+XTALOUT
+  FP1.A6
+  R205.1;
+PD_REG#
+  FP1.A4
+  R208.1
+  C206.2;
+USB_DP
+  FP1.C1
+  R202.1;
+USB_DN
+  FP1.B1
+  R201.1;
+RESET#
+  FP1.A2
+  R204.2
+  C210.1;
+USB_PN2_R
+  FPCN1.8
+  L3.1
+  R18.1;
+USB_PP2_R
+  FPCN1.7
+  L3.2
+  R19.1;
+NC_26
+  FP1.B2;
+NC_27
+  FP1.B7;
+NC_28
+  FP1.B8;
+NC_29
+  FP1.B9;
+NC_30
+  FP1.C2;
+NC_31
+  D1.1;
+NC_32
+  D1.6;
+
+NODES
+  BIOMETRIC_USBPP;
+  GND;
+  BIOMETRIC_USBPN;
+  USBPP2_TVS;
+  USBPN2_TVS;
+  5V_USB4_S3;
+  REF_OSC;
+  BDRIVE1;
+  3D3V_FP_S0;
+  UCR_VDD;
+  ESD_GND;
+  ESD_GND_D1;
+  MISO;
+  BDRIVE2;
+  XTALIN;
+  MOSI;
+  MCK;
+  REG_OUT;
+  ESD_GND_D2;
+  XTALOUT;
+  PD_REG#;
+  USB_DP;
+  USB_DN;
+  RESET#;
+  USB_PN2_R;
+  USB_PP2_R;
+  NC_26;
+  NC_27;
+  NC_28;
+  NC_29;
+  NC_30;
+  NC_31;
+  NC_32;
+
+DEVICES
+R18
+    1.USB_PN2_R
+    2.USBPN2_TVS;
+R19
+    1.USB_PP2_R
+    2.USBPP2_TVS;
+R201
+    1.USB_DN
+    2.BIOMETRIC_USBPN;
+R202
+    1.USB_DP
+    2.BIOMETRIC_USBPP;
+R203
+    1.3D3V_FP_S0
+    2.MISO;
+R204
+    1.3D3V_FP_S0
+    2.RESET#;
+R205
+    1.XTALOUT
+    2.GND;
+R206
+    1.MCK
+    2.GND;
+R207
+    1.MOSI
+    2.GND;
+R208
+    1.PD_REG#
+    2.3D3V_FP_S0;
+R209
+    1.MISO
+    2.GND;
+R210
+    1.BDRIVE1
+    2.ESD_GND_D2;
+R211
+    1.BDRIVE2
+    2.ESD_GND_D1;
+R212
+    1.ESD_GND
+    2.GND;
+C15
+    1.5V_USB4_S3
+    2.GND;
+C16
+    1.5V_USB4_S3
+    2.GND;
+C201
+    1.3D3V_FP_S0
+    2.GND;
+C202
+    1.BIOMETRIC_USBPN
+    2.GND;
+C203
+    1.BIOMETRIC_USBPP
+    2.GND;
+C204
+    1.3D3V_FP_S0
+    2.GND;
+C205
+    1.3D3V_FP_S0
+    2.GND;
+C206
+    1.3D3V_FP_S0
+    2.PD_REG#;
+C207
+    1.UCR_VDD
+    2.GND;
+C208
+    1.REG_OUT
+    2.GND;
+C209
+    1.REF_OSC
+    2.GND;
+C210
+    1.RESET#
+    2.GND;
+C211
+    1.XTALIN
+    2.GND;
+TC1
+    1.5V_USB4_S3
+    2.GND;
+L3
+    1.USB_PN2_R
+    2.USB_PP2_R
+    3.USBPP2_TVS
+    4.USBPN2_TVS;
+D1
+    1.NC_31
+    2.GND
+    3.USBPN2_TVS
+    4.USBPP2_TVS
+    5.5V_USB4_S3
+    6.NC_32;
+D201
+    1.BIOMETRIC_USBPN
+    2.GND;
+D202
+    1.BIOMETRIC_USBPP
+    2.GND;
+D203
+    1.ESD_GND_D1
+    2.ESD_GND_D2
+    3.ESD_GND;
+AFTP302
+    1.5V_USB4_S3;
+AFTP303
+    1.USBPN2_TVS;
+AFTP304
+    1.USBPP2_TVS;
+AFTP305
+    1.GND;
+FP1
+   A1.3D3V_FP_S0
+   A2.RESET#
+   A3.ESD_GND
+   A4.PD_REG#
+   A5.ESD_GND_D2
+   A6.XTALOUT
+   A7.ESD_GND_D2
+   A8.GND
+   A9.ESD_GND
+  A10.REG_OUT
+  A11.3D3V_FP_S0
+   B1.USB_DN
+   B2.NC_26
+   B3.MCK
+   B4.MOSI
+   B5.GND
+   B6.XTALIN
+   B7.NC_27
+   B8.NC_28
+   B9.NC_29
+  B10.BDRIVE2
+  B11.BDRIVE1
+   C1.USB_DP
+   C2.NC_30
+   C3.ESD_GND
+   C4.GND
+   C5.ESD_GND_D1
+   C6.MISO
+   C7.ESD_GND_D1
+   C8.GND
+   C9.ESD_GND
+  C10.UCR_VDD
+  C11.REF_OSC;
+FPCN1
+    1.3D3V_FP_S0
+    2.BIOMETRIC_USBPN
+    3.BIOMETRIC_USBPP
+    4.GND
+    5.GND
+    6.GND
+    7.USB_PP2_R
+    8.USB_PN2_R
+    9.5V_USB4_S3
+   10.5V_USB4_S3
+   11.GND
+   12.GND;
+USB4
+    1.5V_USB4_S3
+    2.USBPN2_TVS
+    3.USBPP2_TVS
+    4.GND
+    5.GND
+    6.GND
+    7.GND
+    8.GND;
+
+END
