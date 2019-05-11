@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using Edward;
 
 
 namespace RotateXy
@@ -119,6 +120,8 @@ namespace RotateXy
             comboBit.SelectedIndex = 0;
             radEastern.Checked = true;
             _RBIT = comboBit.SelectedIndex + 1;
+            txtoldboardxy.SetWatermark("雙擊此處選擇boarxy文件.");
+            
 
 
         }
@@ -149,19 +152,6 @@ namespace RotateXy
                 return;
             if (string.IsNullOrEmpty(txtAngle.Text.Trim()))
                 return;
-
-
-
-
-
-
-         //   double radx = Angel2Pi(Convert.ToInt16(txtAngle.Text.Trim()));
-            //double x1 = Convert.ToDouble(txtOldX.Text.Trim()) * Math.Cos(radx);
-            //double x2 = Convert.ToDouble(txtOldY.Text.Trim()) * Math.Sin(radx);
-            //double y1 = Convert.ToDouble(txtOldY.Text.Trim()) * Math.Cos(radx);
-            //double y2 = Convert.ToDouble(txtOldX.Text.Trim()) * Math.Sin(radx);
-            //txtNewX.Text = Math.Round((x1 - x2), 1).ToString();
-            //txtNewY.Text = Math.Round((y1 + y2), 1).ToString();
 
             int Angle = Convert.ToInt16 (txtAngle.Text.Trim());
             pXY OldPxy = new pXY();
@@ -234,6 +224,13 @@ namespace RotateXy
         {
             if(!string.IsNullOrEmpty (txtNewX.Text)  && !string.IsNullOrEmpty (txtNewY.Text))
                 Clipboard.SetDataObject(txtNewX.Text + "," + txtNewY.Text);
+        }
+
+        private void txtoldboardxy_DoubleClick(object sender, EventArgs e)
+        {
+            OpenFileDialog openfile = new OpenFileDialog();
+            if (openfile.ShowDialog()  == DialogResult.OK)
+                txtoldboardxy.Text = openfile.FileName;
         }
     }
 }

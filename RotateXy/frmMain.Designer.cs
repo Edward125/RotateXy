@@ -57,6 +57,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtoldboardxy = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panelTitle.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -422,12 +424,35 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "boardxy批量轉換";
             // 
+            // txtoldboardxy
+            // 
+            this.txtoldboardxy.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtoldboardxy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtoldboardxy.Location = new System.Drawing.Point(269, 207);
+            this.txtoldboardxy.Name = "txtoldboardxy";
+            this.txtoldboardxy.Size = new System.Drawing.Size(287, 23);
+            this.txtoldboardxy.TabIndex = 13;
+            this.txtoldboardxy.DoubleClick += new System.EventHandler(this.txtoldboardxy_DoubleClick);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.label14.Location = new System.Drawing.Point(190, 208);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(77, 20);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "原boardxy";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(572, 497);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtoldboardxy);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelLeft);
@@ -480,6 +505,8 @@
         private System.Windows.Forms.ComboBox comboBit;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtoldboardxy;
+        private System.Windows.Forms.Label label14;
     }
 }
 
