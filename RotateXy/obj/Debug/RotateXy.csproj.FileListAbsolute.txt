@@ -9,7 +9,6 @@ Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.exe
 Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.pdb
 Y:\EdwardCode\RotateXy\RotateXy\bin\Debug\RotateXy.exe
 Y:\EdwardCode\RotateXy\RotateXy\bin\Debug\RotateXy.pdb
-Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.csprojResolveAssemblyReference.cache
 Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.Properties.Resources.resources
 Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.csproj.GenerateResource.Cache
 Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.frmMain.resources
