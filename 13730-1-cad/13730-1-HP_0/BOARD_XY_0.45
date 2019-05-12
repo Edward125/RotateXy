@@ -1,0 +1,246 @@
+!Tebo-ict v3.0
+!HP3070
+!Date: 2019-5-10 Time: 14:45:9
+scale 0.1;
+units mils;
+
+OUTLINE
+   -5484.2, -9938.5
+   9966.3, -25389.0
+   14615.4, -20739.9
+   -835.2, -5289.4;
+
+
+
+NODE BIOMETRIC_USBPP NO_ACCESS;
+NODE GND        ;
+NODE BIOMETRIC_USBPN NO_ACCESS;
+NODE USBPP2_TVS ;
+NODE USBPN2_TVS ;
+NODE 5V_USB4_S3 ;
+NODE REF_OSC    NO_ACCESS;
+NODE BDRIVE1    
+   ALTERNATES
+            6749.3,    -19620.4       MANDATORY ;!VIA          .     
+NODE 3D3V_FP_S0 
+   ALTERNATES
+            7198.3,    -20350.5       MANDATORY ;!VIA          .     
+NODE UCR_VDD    
+   ALTERNATES
+            6349.8,    -16786.7  TOP  MANDATORY ;!VIA          .     
+NODE ESD_GND    
+   ALTERNATES
+            4610.3,    -18611.1       MANDATORY ;!VIA          .     
+NODE ESD_GND_D1 
+   ALTERNATES
+            7544.8,    -16977.6       MANDATORY ;!VIA          .     
+NODE MISO       
+   ALTERNATES
+            6562.0,    -16263.5  TOP  MANDATORY ;!VIA          .     
+NODE BDRIVE2    
+   ALTERNATES
+            6562.0,    -18639.3       MANDATORY ;!VIA          .     
+NODE XTALIN     NO_ACCESS;
+NODE MOSI       NO_ACCESS;
+NODE MCK        
+   ALTERNATES
+            8244.9,    -15909.9       MANDATORY ;!VIA          .     
+NODE REG_OUT    
+   ALTERNATES
+            7474.1,    -19650.5       MANDATORY ;!VIA          .     
+NODE ESD_GND_D2 
+   ALTERNATES
+            8003.5,    -18406.0       MANDATORY ;!VIA          .     
+NODE XTALOUT    NO_ACCESS;
+NODE PD_REG#    
+   ALTERNATES
+            8916.6,    -17868.6       MANDATORY ;!VIA          .     
+NODE USB_DP     NO_ACCESS;
+NODE USB_DN     NO_ACCESS;
+NODE RESET#     
+   ALTERNATES
+            7636.8,    -15188.7  TOP  MANDATORY ;!VIA          .     
+NODE USB_PN2_R  NO_ACCESS;
+NODE USB_PP2_R  NO_ACCESS;
+NODE NC_26      NO_ACCESS;
+NODE NC_27      NO_ACCESS;
+NODE NC_28      NO_ACCESS;
+NODE NC_29      NO_ACCESS;
+NODE NC_30      NO_ACCESS;
+NODE NC_31      NO_ACCESS;
+NODE NC_32      NO_ACCESS;
+OTHER
+  ALTERNATES
+             -3572.6,    -9177.5       USB4.8           NO_PROBE  ;
+             -1879.1,    -7613.9       USB4.6     TOP   NO_PROBE  ;
+             -431.5,    -8588.2       USB4.1     TOP   MANDATORY  ;
+             413.7,    -7880.7        C16.2           NO_PROBE  ;
+             647.0,    -7647.4        C15.2           NO_PROBE  ;
+             661.1,    -8128.2        C16.1           NO_PROBE  ;
+             894.5,    -7894.8        C15.1           NO_PROBE  ;
+             264.5,    -9284.2       USB4.2     TOP   NO_PROBE  ;
+             1187.9,    -8485.3    AFTP302.1           NO_PROBE  ;
+             821.3,    -9841.0       USB4.3     TOP   MANDATORY  ;
+             1718.3,    -9015.6    AFTP303.1           MANDATORY  ;
+             2248.6,    -9545.9    AFTP304.1           NO_PROBE  ;
+             1517.3,    -10537.0       USB4.4     TOP   NO_PROBE  ;
+             2899.1,    -10040.9    AFTP305.1           MANDATORY  ;
+            2491.6,    -11984.7       USB4.5     TOP   NO_PROBE  ;
+            928.0,    -13678.1       USB4.7           NO_PROBE  ;
+            3532.0,    -12356.7         D1.6           NO_PROBE  ;
+            4281.5,    -11607.2         D1.1           NO_PROBE  ;
+            3797.2,    -12621.9         D1.5           NO_PROBE  ;
+            4546.7,    -11872.3         D1.2           NO_PROBE  ;
+            2071.8,    -14516.9        TC1.2           NO_PROBE  ;
+            3132.5,    -13456.2        TC1.1           NO_PROBE  ;
+            4062.3,    -12887.0         D1.4           NO_PROBE  ;
+            4811.9,    -12137.5         D1.3           NO_PROBE  ;
+            4815.8,    -13228.0         L3.3           NO_PROBE  ;
+            4997.3,    -13046.5         L3.4           NO_PROBE  ;
+            4818.9,    -13304.2        R19.2           NO_PROBE  ;
+            5073.5,    -13049.7        R18.2           NO_PROBE  ;
+            5066.4,    -13551.7        R19.1           NO_PROBE  ;
+            5321.0,    -13297.1        R18.1           NO_PROBE  ;
+            5142.6,    -13554.8         L3.2           NO_PROBE  ;
+            5324.1,    -13373.4         L3.1           NO_PROBE  ;
+            6523.1,    -15496.2       C204.1           NO_PROBE  ;
+            6770.5,    -15248.8       C204.2           NO_PROBE  ;
+            6989.8,    -15029.6       R204.1           NO_PROBE  ;
+            7237.2,    -14782.1       R204.2           NO_PROBE  ;
+            6303.9,    -15722.5       R203.1           NO_PROBE  ;
+            6756.4,    -15729.6       R209.1           NO_PROBE  ;
+            7003.9,    -15482.1       R209.2           NO_PROBE  ;
+            7223.1,    -15262.9       C210.2           NO_PROBE  ;
+            7470.6,    -15015.4       C210.1           NO_PROBE  ;
+            6551.3,    -15970.0       R203.2           NO_PROBE  ;
+            5872.5,    -16691.3       C209.2           NO_PROBE  ;
+            6105.9,    -16457.9       C207.2           NO_PROBE  ;
+            6339.2,    -16224.6       C211.2           NO_PROBE  ;
+            6120.0,    -16938.7       C209.1           NO_PROBE  ;
+            6353.4,    -16705.4       C207.1           NO_PROBE  ;
+            6586.7,    -16472.1       C211.1           NO_PROBE  ;
+            7343.3,    -15871.0       R207.2           NO_PROBE  ;
+            7597.9,    -15616.5       R206.2           NO_PROBE  ;
+            7590.8,    -16118.5       R207.1           NO_PROBE  ;
+            7845.3,    -15863.9       R206.1           NO_PROBE  ;
+            5267.9,    -18759.5       R212.1           NO_PROBE  ;
+            6639.7,    -17416.0       D203.3           NO_PROBE  ;
+            6867.8,    -17866.8       D203.2           NO_PROBE  ;
+            7090.5,    -17644.1       D203.1           NO_PROBE  ;
+            5635.6,    -19127.2       R212.2           NO_PROBE  ;
+            6319.4,    -18902.5        FP1.C11   TOP   NO_PROBE  ;
+            6597.8,    -18624.1        FP1.C10   TOP   NO_PROBE  ;
+            6876.2,    -18345.7        FP1.C9    TOP   NO_PROBE  ;
+            7154.6,    -18067.4        FP1.C8    TOP   NO_PROBE  ;
+            7433.0,    -17789.0        FP1.C7    TOP   NO_PROBE  ;
+            7711.4,    -17510.6        FP1.C6    TOP   NO_PROBE  ;
+            7989.7,    -17232.2        FP1.C5    TOP   NO_PROBE  ;
+            8268.1,    -16953.8        FP1.C4    TOP   NO_PROBE  ;
+            8546.5,    -16675.4        FP1.C3    TOP   NO_PROBE  ;
+            8824.9,    -16397.0        FP1.C2    TOP   NO_PROBE  ;
+            9103.3,    -16118.6        FP1.C1    TOP   NO_PROBE  ;
+            6597.8,    -19180.9        FP1.B11   TOP   NO_PROBE  ;
+            6876.2,    -18902.5        FP1.B10   TOP   NO_PROBE  ;
+            7154.6,    -18624.1        FP1.B9    TOP   NO_PROBE  ;
+            7433.0,    -18345.7        FP1.B8    TOP   NO_PROBE  ;
+            7711.4,    -18067.4        FP1.B7    TOP   NO_PROBE  ;
+            7989.7,    -17789.0        FP1.B6    TOP   NO_PROBE  ;
+            8268.1,    -17510.6        FP1.B5    TOP   NO_PROBE  ;
+            8546.5,    -17232.2        FP1.B4    TOP   NO_PROBE  ;
+            8824.9,    -16953.8        FP1.B3    TOP   NO_PROBE  ;
+            9103.3,    -16675.4        FP1.B2    TOP   NO_PROBE  ;
+            9381.7,    -16397.0        FP1.B1    TOP   NO_PROBE  ;
+            6763.5,    -19130.8       R211.1           NO_PROBE  ;
+            7011.0,    -18883.3       R211.2           NO_PROBE  ;
+            6876.2,    -19459.3        FP1.A11   TOP   NO_PROBE  ;
+            7154.6,    -19180.9        FP1.A10   TOP   NO_PROBE  ;
+            7433.0,    -18902.5        FP1.A9    TOP   NO_PROBE  ;
+            7711.4,    -18624.1        FP1.A8    TOP   NO_PROBE  ;
+            7989.7,    -18345.7        FP1.A7    TOP   NO_PROBE  ;
+            8268.1,    -18067.4        FP1.A6    TOP   NO_PROBE  ;
+            8546.5,    -17789.0        FP1.A5    TOP   NO_PROBE  ;
+            8824.9,    -17510.6        FP1.A4    TOP   NO_PROBE  ;
+            9103.3,    -17232.2        FP1.A3    TOP   NO_PROBE  ;
+            9381.7,    -16953.8        FP1.A2    TOP   NO_PROBE  ;
+            9660.1,    -16675.4        FP1.A1    TOP   NO_PROBE  ;
+            6996.8,    -19364.1       R210.1           NO_PROBE  ;
+            7244.3,    -19116.6       R210.2           NO_PROBE  ;
+            9167.6,    -17539.8       R202.1           NO_PROBE  ;
+            9393.9,    -17313.5       R201.1           NO_PROBE  ;
+            9415.1,    -17787.3       R202.2           NO_PROBE  ;
+            9641.4,    -17561.0       R201.2           NO_PROBE  ;
+            9853.5,    -17801.4       C202.1           NO_PROBE  ;
+            10086.9,    -17568.1       C201.1           NO_PROBE  ;
+            7513.0,    -20156.1       C205.1           NO_PROBE  ;
+            7746.4,    -19922.7       C208.1           NO_PROBE  ;
+            8382.8,    -19286.3       R205.1           NO_PROBE  ;
+            8976.7,    -18692.4       R208.1           NO_PROBE  ;
+            9210.1,    -18459.0       C206.2           NO_PROBE  ;
+            9500.0,    -18169.1       C203.1           NO_PROBE  ;
+            10101.0,    -18048.9       C202.2           NO_PROBE  ;
+            10334.4,    -17815.6       C201.2           NO_PROBE  ;
+            7760.5,    -20403.6       C205.2           NO_PROBE  ;
+            7993.8,    -20170.2       C208.2           NO_PROBE  ;
+            8630.2,    -19533.8       R205.2           NO_PROBE  ;
+            9224.2,    -18939.9       R208.2           NO_PROBE  ;
+            9457.6,    -18706.5       C206.1           NO_PROBE  ;
+            9747.5,    -18416.6       C203.2           NO_PROBE  ;
+            9340.0,    -19918.7      FPCN1.11          NO_PROBE  ;
+            8929.3,    -21275.9      FPCN1.1           NO_PROBE  ;
+            9068.5,    -21415.0      FPCN1.2           NO_PROBE  ;
+            9207.7,    -21554.2      FPCN1.3           NO_PROBE  ;
+            9346.9,    -21693.4      FPCN1.4           NO_PROBE  ;
+            9486.1,    -21832.6      FPCN1.5           NO_PROBE  ;
+            9625.3,    -21971.8      FPCN1.6           NO_PROBE  ;
+            8768.1,   -23065.8       D201.2           NO_PROBE  ;
+            9263.1,    -22570.8       D201.1           NO_PROBE  ;
+            9764.5,    -22111.0      FPCN1.7           NO_PROBE  ;
+            9903.7,    -22250.2      FPCN1.8           NO_PROBE  ;
+            10042.9,    -22389.4      FPCN1.9           NO_PROBE  ;
+            9171.2,   -23468.9       D202.2           NO_PROBE  ;
+            9666.1,    -22973.9       D202.1           NO_PROBE  ;
+            10182.1,    -22528.6      FPCN1.10          NO_PROBE  ;
+            11539.2,    -22117.9      FPCN1.12          NO_PROBE  ;
+
+DEVICES
+    R18        BOTTOM;
+    R19        BOTTOM;
+    R201       BOTTOM;
+    R202       BOTTOM;
+    R203       BOTTOM;
+    R204       BOTTOM;
+    R205       BOTTOM;
+    R206       BOTTOM;
+    R207       BOTTOM;
+    R208       BOTTOM;
+    R209       BOTTOM;
+    R210       BOTTOM;
+    R211       BOTTOM;
+    R212       BOTTOM;
+    C15        BOTTOM;
+    C16        BOTTOM;
+    C201       BOTTOM;
+    C202       BOTTOM;
+    C203       BOTTOM;
+    C204       BOTTOM;
+    C205       BOTTOM;
+    C206       BOTTOM;
+    C207       BOTTOM;
+    C208       BOTTOM;
+    C209       BOTTOM;
+    C210       BOTTOM;
+    C211       BOTTOM;
+    TC1        BOTTOM;
+    L3         BOTTOM;
+    D1         BOTTOM;
+    D201       BOTTOM;
+    D202       BOTTOM;
+    D203       BOTTOM;
+    AFTP302    BOTTOM;
+    AFTP303    BOTTOM;
+    AFTP304    BOTTOM;
+    AFTP305    BOTTOM;
+    FPCN1      BOTTOM;
+    USB4       BOTTOM;
+
+END

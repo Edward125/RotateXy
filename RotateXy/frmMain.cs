@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Edward;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Threading;
 
 
 namespace RotateXy
@@ -41,6 +42,18 @@ namespace RotateXy
         private  Dictionary<pXY, pXY> RotateXY = new Dictionary<pXY, pXY>();
         private List<pXY> OldXyList = new List<pXY>();
         private List<pXY> NewXyList = new List<pXY>();
+
+        private bool IsRotating = false;
+
+
+        public delegate void RotateFile();//定度委托
+        /// <summary>
+        /// 在线程上执行委托
+        /// </summary>
+        public void SetRotateFile()
+        {
+            this.Invoke(new RotateFile (Rotate));//在线程上执行指定的委托
+        }
 
 
         /// <summary>
@@ -97,7 +110,15 @@ namespace RotateXy
 
         private void lblClose_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            if (!IsRotating)
+            {
+                DialogResult dr = MessageBox.Show("是否確認退出軟件,退出點擊是(Y),不退出點擊否(N)?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                    Environment.Exit(0);
+            }
+               
+
+          
         }
 
         private void lblMinimize_MouseLeave(object sender, EventArgs e)
@@ -332,9 +353,19 @@ namespace RotateXy
         private void btnRotate_Click(object sender, EventArgs e)
         {
 
-            if(string.IsNullOrEmpty (txtoldboardxy.Text .Trim()))
+            Thread r = new Thread(new ThreadStart(SetRotateFile));
+            r.Start();
+        }
+
+
+
+
+        private  void Rotate()
+        {
+            IsRotating = true;
+            if (string.IsNullOrEmpty(txtoldboardxy.Text.Trim()))
             {
-                updateMessage(lstMsg, "请选择boardxy文件.");
+                updateMessage(lstMsg, "請選擇boardxy文件.");
                 txtoldboardxy.Focus();
                 return;
             }
@@ -351,22 +382,20 @@ namespace RotateXy
 
             if (string.IsNullOrEmpty(txtAngle.Text.Trim()))
             {
-                updateMessage(lstMsg,"旋转角度不能为空.");
+                updateMessage(lstMsg, "旋轉角度不能為空.");
                 txtAngle.Focus();
                 return;
             }
             int Angle = Convert.ToInt16(txtAngle.Text.Trim());
 
-
             RotateXY.Clear();
             OldXyList.Clear();
             NewXyList.Clear();
-
             int Rows = GetRows(fi.FullName);
             progressBar1.Visible = true;
             progressBar1.Minimum = 1;
             progressBar1.Maximum = Rows;
-            string destboardxy = fi.FullName +@"." + Angle;
+            string destboardxy = fi.FullName + @"." + Angle;
             StreamReader sr = new StreamReader(fi.FullName);
             StreamWriter sw = new StreamWriter(destboardxy);
             string line = string.Empty;
@@ -374,11 +403,11 @@ namespace RotateXy
 
             while (!sr.EndOfStream)
             {
-                line = sr.ReadLine(); 
+                line = sr.ReadLine();
                 lines++;
                 progressBar1.Value = lines;
                 lblPercent.Visible = true;
-                lblPercent.Text =( ((double)lines) / ((double)Rows)).ToString("P2");
+                lblPercent.Text = (((double)lines) / ((double)Rows)).ToString("P2");
 
                 pXY oldpxy = new pXY();
 
@@ -388,26 +417,22 @@ namespace RotateXy
                     pXY NewPxy = CalcRoateXy(Angle, _ROTATE, oldpxy, _RBIT);
                     RotateXY.Add(oldpxy, NewPxy);
                     string nline = line.Replace(oldpxy.X.ToString("0.0"), NewPxy.X.ToString("0.0")).Replace(oldpxy.Y.ToString("0.0"), NewPxy.Y.ToString("0.0"));
-                   // nline = nline.Replace(oldpxy.Y.ToString(), NewPxy.Y.ToString());
+                    // nline = nline.Replace(oldpxy.Y.ToString(), NewPxy.Y.ToString());
                     sw.WriteLine(nline);
                 }
                 else
                     sw.WriteLine(line);
-
             }
-            
+
             sw.Close();
             sr.Close();
             progressBar1.Visible = false;
             lblPercent.Visible = false;
+            IsRotating = false;
             updateMessage(lstMsg, "新文件地址:" + destboardxy);
-            updateMessage(lstMsg,"处理完毕...");
-
-
+            updateMessage(lstMsg, "處理完畢...");
+            System.Diagnostics.Process.Start(fi.DirectoryName);
         }
-
-
-
 
 
     }
