@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Edward;
 using System.Text.RegularExpressions;
+using System.IO;
 
 
 namespace RotateXy
@@ -37,6 +38,9 @@ namespace RotateXy
         private RotateFlag _ROTATE;
         private int _RBIT = 1;//计算结果保留位数
 
+        private  Dictionary<pXY, pXY> RotateXY = new Dictionary<pXY, pXY>();
+        private List<pXY> OldXyList = new List<pXY>();
+        private List<pXY> NewXyList = new List<pXY>();
 
 
         /// <summary>
@@ -122,6 +126,8 @@ namespace RotateXy
             radEastern.Checked = true;
             _RBIT = comboBit.SelectedIndex + 1;
             txtoldboardxy.SetWatermark("雙擊此處選擇boarxy文件.");
+            progressBar1.Visible = false;
+            lblPercent.Visible = false;
             
 
 
@@ -250,9 +256,42 @@ namespace RotateXy
             }
         }
 
+        /// <summary>
+        /// 更新信息到listbox中
+        /// </summary>
+        /// <param name="listbox">listbox name</param>
+        /// <param name="message">message</param>
+        public static void updateMessage(ListBox listbox, string message)
+        {
+            if (listbox.Items.Count > 1000)
+                listbox.Items.RemoveAt(0);
+
+            string item = string.Empty;
+            //listbox.Items.Add("");
+            item = DateTime.Now.ToString("HH:mm:ss") + " " + @message;
+            listbox.Items.Add(item);
+            if (listbox.Items.Count > 1)
+            {
+                listbox.TopIndex = listbox.Items.Count - 1;
+                listbox.SetSelected(listbox.Items.Count - 1, true);
+            }
+        }
 
 
 
+        /// <summary>
+        /// 返回文本行数
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <returns></returns>
+
+        public int GetRows(string FilePath)
+        {
+            using (StreamReader read = new StreamReader(FilePath, Encoding.Default))
+            {
+                return read.ReadToEnd().Split('\n').Length;
+            }
+        }
 
 
 
@@ -289,5 +328,87 @@ namespace RotateXy
             if (openfile.ShowDialog()  == DialogResult.OK)
                 txtoldboardxy.Text = openfile.FileName;
         }
+
+        private void btnRotate_Click(object sender, EventArgs e)
+        {
+
+            if(string.IsNullOrEmpty (txtoldboardxy.Text .Trim()))
+            {
+                updateMessage(lstMsg, "请选择boardxy文件.");
+                txtoldboardxy.Focus();
+                return;
+            }
+
+            FileInfo fi = new FileInfo(txtoldboardxy.Text.Trim());
+            if (!fi.Exists)
+            {
+                updateMessage(lstMsg, fi.Name + "不存在.");
+                txtoldboardxy.SelectAll();
+                txtoldboardxy.Focus();
+                return;
+            }
+
+
+            if (string.IsNullOrEmpty(txtAngle.Text.Trim()))
+            {
+                updateMessage(lstMsg,"旋转角度不能为空.");
+                txtAngle.Focus();
+                return;
+            }
+            int Angle = Convert.ToInt16(txtAngle.Text.Trim());
+
+
+            RotateXY.Clear();
+            OldXyList.Clear();
+            NewXyList.Clear();
+
+            int Rows = GetRows(fi.FullName);
+            progressBar1.Visible = true;
+            progressBar1.Minimum = 1;
+            progressBar1.Maximum = Rows;
+            string destboardxy = fi.FullName +@"." + Angle;
+            StreamReader sr = new StreamReader(fi.FullName);
+            StreamWriter sw = new StreamWriter(destboardxy);
+            string line = string.Empty;
+            int lines = 0;
+
+            while (!sr.EndOfStream)
+            {
+                line = sr.ReadLine(); 
+                lines++;
+                progressBar1.Value = lines;
+                lblPercent.Visible = true;
+                lblPercent.Text =( ((double)lines) / ((double)Rows)).ToString("P2");
+
+                pXY oldpxy = new pXY();
+
+                if (IsLocationLine(line, out oldpxy))
+                {
+                    OldXyList.Add(oldpxy);
+                    pXY NewPxy = CalcRoateXy(Angle, _ROTATE, oldpxy, _RBIT);
+                    RotateXY.Add(oldpxy, NewPxy);
+                    string nline = line.Replace(oldpxy.X.ToString("0.0"), NewPxy.X.ToString("0.0")).Replace(oldpxy.Y.ToString("0.0"), NewPxy.Y.ToString("0.0"));
+                   // nline = nline.Replace(oldpxy.Y.ToString(), NewPxy.Y.ToString());
+                    sw.WriteLine(nline);
+                }
+                else
+                    sw.WriteLine(line);
+
+            }
+            
+            sw.Close();
+            sr.Close();
+            progressBar1.Visible = false;
+            lblPercent.Visible = false;
+            updateMessage(lstMsg, "新文件地址:" + destboardxy);
+            updateMessage(lstMsg,"处理完毕...");
+
+
+        }
+
+
+
+
+
     }
 }

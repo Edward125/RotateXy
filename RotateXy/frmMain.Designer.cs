@@ -59,6 +59,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtoldboardxy = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblPercent = new System.Windows.Forms.Label();
+            this.lstMsg = new System.Windows.Forms.ListBox();
+            this.btnRotate = new System.Windows.Forms.Button();
             this.panelTitle.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -198,7 +202,7 @@
             this.panelLeft.Controls.Add(this.txtAngle);
             this.panelLeft.Location = new System.Drawing.Point(0, 42);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(162, 455);
+            this.panelLeft.Size = new System.Drawing.Size(162, 388);
             this.panelLeft.TabIndex = 9;
             this.panelLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelLeft_MouseDown);
             // 
@@ -445,12 +449,58 @@
             this.label14.TabIndex = 17;
             this.label14.Text = "原boardxy";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(192, 408);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 18);
+            this.progressBar1.TabIndex = 18;
+            // 
+            // lblPercent
+            // 
+            this.lblPercent.AutoSize = true;
+            this.lblPercent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(118)))), ((int)(((byte)(216)))));
+            this.lblPercent.Location = new System.Drawing.Point(529, 411);
+            this.lblPercent.Name = "lblPercent";
+            this.lblPercent.Size = new System.Drawing.Size(35, 12);
+            this.lblPercent.TabIndex = 19;
+            this.lblPercent.Text = "0.00%";
+            // 
+            // lstMsg
+            // 
+            this.lstMsg.FormattingEnabled = true;
+            this.lstMsg.HorizontalScrollbar = true;
+            this.lstMsg.ItemHeight = 12;
+            this.lstMsg.Location = new System.Drawing.Point(194, 238);
+            this.lstMsg.Name = "lstMsg";
+            this.lstMsg.Size = new System.Drawing.Size(282, 160);
+            this.lstMsg.TabIndex = 20;
+            // 
+            // btnRotate
+            // 
+            this.btnRotate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(118)))), ((int)(((byte)(216)))));
+            this.btnRotate.FlatAppearance.BorderSize = 0;
+            this.btnRotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRotate.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRotate.ForeColor = System.Drawing.Color.White;
+            this.btnRotate.Location = new System.Drawing.Point(482, 248);
+            this.btnRotate.Name = "btnRotate";
+            this.btnRotate.Size = new System.Drawing.Size(78, 35);
+            this.btnRotate.TabIndex = 17;
+            this.btnRotate.Text = "旋转坐标";
+            this.btnRotate.UseVisualStyleBackColor = false;
+            this.btnRotate.Click += new System.EventHandler(this.btnRotate_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(572, 497);
+            this.ClientSize = new System.Drawing.Size(572, 434);
+            this.Controls.Add(this.btnRotate);
+            this.Controls.Add(this.lstMsg);
+            this.Controls.Add(this.lblPercent);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtoldboardxy);
             this.Controls.Add(this.label4);
@@ -507,6 +557,10 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtoldboardxy;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label lblPercent;
+        private System.Windows.Forms.ListBox lstMsg;
+        private System.Windows.Forms.Button btnRotate;
     }
 }
 
