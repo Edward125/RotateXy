@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using Edward;
+using System.Text.RegularExpressions;
 
 
 namespace RotateXy
@@ -198,6 +199,62 @@ namespace RotateXy
 
             return newpxy;
         }
+
+
+        /// <summary>
+        /// 判断这行文字是否含有坐标
+        /// </summary>
+        /// <param name="linestr"></param>
+        /// <returns></returns>
+        private bool IsLocationLine(string linestr)
+        {
+            string MatchFlag = @"[-0-9.]*, *[-0-9.]*";
+            Match match = Regex.Match(linestr, MatchFlag);
+            if (match.Success)
+                return true;
+            else
+                return false;
+        }
+
+
+
+
+        /// <summary>
+        /// 判断这行文字是否含有坐标，如果有就返回坐标
+        /// </summary>
+        /// <param name="linestr"></param>
+        /// <param name="oldpxy"></param>
+        /// <returns></returns>
+        private bool IsLocationLine(string linestr,out pXY oldpxy)
+        {
+            oldpxy = new pXY();
+            string MatchFlag = @"[-0-9.]*, *[-0-9.]*";
+            Match match = Regex.Match(linestr, MatchFlag);
+            if (match.Success)
+            {
+                string xystr = match.Groups[0].Value;
+                string x = xystr.Substring(0, xystr.LastIndexOf(','));
+                string y = xystr.Replace(x, "");
+                if (y.Contains(","))
+                    y = y.Replace(",", "");
+                if (y.Contains(";"))
+                    y = y.Replace(";", "");
+                oldpxy.X = Convert.ToDouble(x);
+                oldpxy.Y = Convert.ToDouble(y);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+
+
+
 
         private void radEastern_CheckedChanged(object sender, EventArgs e)
         {
