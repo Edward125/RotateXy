@@ -150,6 +150,7 @@ namespace RotateXy
             txtoldboardxy.SetWatermark("雙擊此處選擇boarxy文件.");
             progressBar1.Visible = false;
             lblPercent.Visible = false;
+           // lblTitle.Text = "拼板坐標旋轉計算器,Ver:" + Application.ProductVersion;
             
 
 
