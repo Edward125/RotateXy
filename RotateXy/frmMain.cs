@@ -98,6 +98,7 @@ namespace RotateXy
 
         private void panelTitle_MouseDown(object sender, MouseEventArgs e)
         {
+            
             ReleaseCapture();
             SendMessage(this.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
         }
@@ -432,6 +433,18 @@ namespace RotateXy
             updateMessage(lstMsg, "新文件地址:" + destboardxy);
             updateMessage(lstMsg, "處理完畢...");
             System.Diagnostics.Process.Start(fi.DirectoryName);
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            frmAbout f = new frmAbout();
+            f.ShowDialog();
         }
 
 
