@@ -42,6 +42,7 @@ namespace RotateXy
         private  Dictionary<pXY, pXY> RotateXY = new Dictionary<pXY, pXY>();
         private List<pXY> OldXyList = new List<pXY>();
         private List<pXY> NewXyList = new List<pXY>();
+        private BoardXyFileType _BoardXyFile;
 
         private bool IsRotating = false;
 
@@ -75,6 +76,14 @@ namespace RotateXy
         }
 
 
+        /// <summary>
+        /// board_xy类型,tebo ict，坐标一位小数点，agilent ict 坐标无小数点
+        /// </summary>
+        public enum BoardXyFileType
+        {
+            TEBO_ICT,
+            AGILENT_ICT
+        }
 
 
         /// <summary>
@@ -115,7 +124,17 @@ namespace RotateXy
             {
                 DialogResult dr = MessageBox.Show("是否確認退出軟件,退出點擊是(Y),不退出點擊否(N)?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
-                    Environment.Exit(0);
+                {
+                    try
+                    {
+                        Environment.Exit(0);
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
+                   
+                }
             }
                
 
@@ -229,6 +248,39 @@ namespace RotateXy
             return newpxy;
         }
 
+        /// <summary>
+        /// 计算旋转后的新坐标
+        /// </summary>
+        /// <param name="angle"></param>
+        /// <param name="rotate"></param>
+        /// <param name="oldpxy"></param>
+        /// <returns></returns>
+        private pXY CalcRoateXy(int angle, RotateFlag rotate, pXY oldpxy)
+        {
+            pXY newpxy = new pXY();
+            double radx = Angel2Pi(angle);
+            double x1 = oldpxy.X * Math.Cos(radx);
+            double x2 = oldpxy.Y * Math.Sin(radx);
+
+            double y1 = oldpxy.Y * Math.Cos(radx);
+            double y2 = oldpxy.X * Math.Sin(radx);
+            if (rotate == RotateFlag.EASTERN)
+            {
+                newpxy.X = Math.Round((x1 - x2), 0);
+                newpxy.Y = Math.Round((y1 + y2), 0);
+            }
+
+            if (rotate == RotateFlag.CLOCKWISE)
+            {
+                newpxy.X = Math.Round((x1 + x2), 0);
+                newpxy.Y = Math.Round((y1 - y2), 0);
+            }
+
+
+
+            return newpxy;
+        }
+
 
         /// <summary>
         /// 判断这行文字是否含有坐标
@@ -258,16 +310,18 @@ namespace RotateXy
         {
             oldpxy = new pXY();
             string MatchFlag = @"[-0-9.]*, *[-0-9.]*";
+            if (linestr.StartsWith("!"))
+                return false;
             Match match = Regex.Match(linestr, MatchFlag);
             if (match.Success)
             {
                 string xystr = match.Groups[0].Value;
-                string x = xystr.Substring(0, xystr.LastIndexOf(','));
-                string y = xystr.Replace(x, "");
-                if (y.Contains(","))
-                    y = y.Replace(",", "");
-                if (y.Contains(";"))
-                    y = y.Replace(";", "");
+                string x = xystr.Split(',')[0];
+                string y = xystr.Split(',')[1];
+                //if (y.Contains(","))
+                //    y = y.Replace(",", "");
+                //if (y.Contains(";"))
+                //    y = y.Replace(";", "");
                 oldpxy.X = Convert.ToDouble(x);
                 oldpxy.Y = Convert.ToDouble(y);
 
@@ -277,6 +331,29 @@ namespace RotateXy
             {
                 return false;
             }
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="linestr"></param>
+        /// <param name="oldxy"></param>
+        /// <param name="newxy"></param>
+        /// <returns></returns>
+        private string ReplaceOldXy2NewXy(string linestr, pXY newxy)
+        {
+            string MatchFlag = @"[-0-9.]*, *[-0-9.]*";
+            if (linestr.StartsWith("!"))
+                return linestr;
+            Match match = Regex.Match(linestr, MatchFlag);
+            if (match.Success)
+            {
+                string xystr = match.Groups[0].Value;
+                linestr = linestr.Replace(xystr, newxy.X.ToString() + "," + newxy.Y.ToString().PadLeft(8, ' '));
+            }
+            return linestr;
         }
 
         /// <summary>
@@ -355,6 +432,7 @@ namespace RotateXy
         private void btnRotate_Click(object sender, EventArgs e)
         {
 
+            //Rotate();
             Thread r = new Thread(new ThreadStart(SetRotateFile));
             r.Start();
         }
@@ -419,10 +497,11 @@ namespace RotateXy
                 if (IsLocationLine(line, out oldpxy))
                 {
                     OldXyList.Add(oldpxy);
-                    pXY NewPxy = CalcRoateXy(Angle, _ROTATE, oldpxy, _RBIT);
+                    pXY NewPxy = CalcRoateXy(Angle, _ROTATE, oldpxy);
                     RotateXY.Add(oldpxy, NewPxy);
-                    string nline = line.Replace(oldpxy.X.ToString("0.0"), NewPxy.X.ToString("0.0")).Replace(oldpxy.Y.ToString("0.0"), NewPxy.Y.ToString("0.0"));
+                  //  string nline = line.Replace(oldpxy.X.ToString(), NewPxy.X.ToString()).Replace(oldpxy.Y.ToString(), NewPxy.Y.ToString());
                     // nline = nline.Replace(oldpxy.Y.ToString(), NewPxy.Y.ToString());
+                    string nline = ReplaceOldXy2NewXy(line, NewPxy);
                     sw.WriteLine(nline);
                 }
                 else
