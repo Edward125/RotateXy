@@ -1,6 +1,5 @@
 E:\EdwardCode\RotateXy\RotateXy\bin\Debug\RotateXy.exe
 E:\EdwardCode\RotateXy\RotateXy\bin\Debug\RotateXy.pdb
-E:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.Form1.resources
 E:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.Properties.Resources.resources
 E:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.csproj.GenerateResource.Cache
 E:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.exe
@@ -13,3 +12,5 @@ Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.Properties.Resources.resource
 Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.csproj.GenerateResource.Cache
 Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.frmMain.resources
 Y:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.frmAbout.resources
+E:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.frmAbout.resources
+E:\EdwardCode\RotateXy\RotateXy\obj\Debug\RotateXy.frmMain.resources

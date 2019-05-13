@@ -369,6 +369,7 @@ namespace RotateXy
             {
                 updateMessage(lstMsg, "請選擇boardxy文件.");
                 txtoldboardxy.Focus();
+                IsRotating = false;
                 return;
             }
 
@@ -378,6 +379,7 @@ namespace RotateXy
                 updateMessage(lstMsg, fi.Name + "不存在.");
                 txtoldboardxy.SelectAll();
                 txtoldboardxy.Focus();
+                IsRotating = false;
                 return;
             }
 
@@ -386,6 +388,7 @@ namespace RotateXy
             {
                 updateMessage(lstMsg, "旋轉角度不能為空.");
                 txtAngle.Focus();
+                IsRotating = false;
                 return;
             }
             int Angle = Convert.ToInt16(txtAngle.Text.Trim());
