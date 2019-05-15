@@ -79,6 +79,7 @@
             this.txtOldX.Size = new System.Drawing.Size(60, 22);
             this.txtOldX.TabIndex = 0;
             this.txtOldX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtOldX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOldX_KeyPress);
             // 
             // txtOldY
             // 
@@ -89,6 +90,7 @@
             this.txtOldY.Size = new System.Drawing.Size(60, 22);
             this.txtOldY.TabIndex = 1;
             this.txtOldY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtOldY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOldY_KeyPress);
             // 
             // txtNewX
             // 
@@ -131,10 +133,12 @@
             // 
             this.txtAngle.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAngle.Location = new System.Drawing.Point(90, 119);
+            this.txtAngle.MaxLength = 3;
             this.txtAngle.Name = "txtAngle";
             this.txtAngle.Size = new System.Drawing.Size(39, 22);
             this.txtAngle.TabIndex = 7;
             this.txtAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAngle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAngle_KeyPress);
             // 
             // panelTitle
             // 

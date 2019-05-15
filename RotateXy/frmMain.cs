@@ -195,6 +195,13 @@ namespace RotateXy
 
         private void btnCalcSingle_Click(object sender, EventArgs e)
         {
+            if (Convert.ToInt16(txtAngle.Text.Trim()) > 360)
+            {
+                txtAngle.SelectAll();
+                txtAngle.Focus();
+                return;
+            }
+
             if (string.IsNullOrEmpty(txtOldX.Text.Trim()))
                 return;
             if (string.IsNullOrEmpty(txtOldY.Text.Trim()))
@@ -443,6 +450,17 @@ namespace RotateXy
         private  void Rotate()
         {
             IsRotating = true;
+
+            if (Convert.ToInt16(txtAngle.Text.Trim()) > 360)
+            {
+                updateMessage(lstMsg, "角度最大不能超過360度.");
+                txtAngle.SelectAll();
+                txtAngle.Focus();
+                IsRotating = false;
+                return;
+            }
+
+
             if (string.IsNullOrEmpty(txtoldboardxy.Text.Trim()))
             {
                 updateMessage(lstMsg, "請選擇boardxy文件.");
@@ -528,6 +546,67 @@ namespace RotateXy
         {
             frmAbout f = new frmAbout();
             f.ShowDialog();
+        }
+
+        private void txtAngle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8)
+                e.Handled = true;
+
+        }
+
+        private void txtOldX_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46)
+                e.Handled = true;
+
+            if (e.KeyChar == 46)                       //小数点
+            {
+                if (txtOldX.Text.Length <= 0)
+                    e.Handled = true;           //小数点不能在第一位
+                else
+                {
+                    float f;
+                    float oldf;
+                    bool b1 = false, b2 = false;
+                    b1 = float.TryParse(txtOldX.Text, out oldf);
+                    b2 = float.TryParse(txtOldX.Text + e.KeyChar.ToString(), out f);
+                    if (b2 == false)
+                    {
+                        if (b1 == true)
+                            e.Handled = true;
+                        else
+                            e.Handled = false;
+                    }
+                }
+            }
+        }
+
+        private void txtOldY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46)
+                e.Handled = true;
+
+            if (e.KeyChar == 46)                       //小数点
+            {
+                if (txtOldY.Text.Length <= 0)
+                    e.Handled = true;           //小数点不能在第一位
+                else
+                {
+                    float f;
+                    float oldf;
+                    bool b1 = false, b2 = false;
+                    b1 = float.TryParse(txtOldY.Text, out oldf);
+                    b2 = float.TryParse(txtOldY.Text + e.KeyChar.ToString(), out f);
+                    if (b2 == false)
+                    {
+                        if (b1 == true)
+                            e.Handled = true;
+                        else
+                            e.Handled = false;
+                    }
+                }
+            }
         }
 
 
